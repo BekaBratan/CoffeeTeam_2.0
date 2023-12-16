@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#207155"
+    android:background="@color/background"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/main_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Account"
-        android:textColor="#000000"
+        android:text="@string/registration"
+        android:textColor="@color/button"
         android:layout_gravity="center"
         android:layout_marginTop="170dp"
         android:textSize="25sp"
@@ -25,11 +24,11 @@
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Enter login"
-        android:textColorHint="#6a6a6a"
+        android:hint="@string/enter_login"
+        android:textColorHint="@color/card"
         android:inputType="text"
         android:layout_gravity="center"
-        android:textColor="#000000"/>
+        android:textColor="@color/button"/>
 
     <EditText
         android:id="@+id/user_email"
@@ -37,11 +36,11 @@
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Enter email"
-        android:textColorHint="#6a6a6a"
+        android:hint="@string/enter_email"
+        android:textColorHint="@color/card"
         android:inputType="textEmailAddress"
         android:layout_gravity="center"
-        android:textColor="#000000"/>
+        android:textColor="@color/button"/>
 
     <EditText
         android:id="@+id/user_pass"
@@ -49,31 +48,31 @@
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Enter password"
-        android:textColorHint="#6a6a6a"
+        android:hint="@string/enter_pass"
+        android:textColorHint="@color/card"
         android:inputType="textPassword"
         android:layout_gravity="center"
-        android:textColor="#000000"/>
+        android:textColor="@color/button"/>
 
     <Button
         android:id="@+id/button_reg"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Create"
+        android:text="@string/register"
         android:textSize="16sp"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:layout_gravity="center"
-        android:backgroundTint="#22DA41"
+        android:backgroundTint="@color/button"
         />
 
     <TextView
         android:id="@+id/link_to_auth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Authorization"
-        android:textColor="#000000"
+        android:text="@string/authorization"
+        android:textColor="@color/button"
         android:layout_gravity="center"
         android:layout_marginTop="120dp"
         android:textSize="17sp"

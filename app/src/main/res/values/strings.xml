@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">CoffeeProject</string>
+    <string name="authorization">Authorization</string>
+    <string name="authorize">Authorize</string>
+    <string name="registration">Registration</string>
+    <string name="register">Register</string>
+    <string name="enter_login">Enter login</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_pass">Enter password</string>
+    <string name="titleCoffee">Coffees</string>
+    <string name="example">Example</string>
+
 </resources>
