@@ -1,20 +1,25 @@
 package com.example.coffeeproject
 
 import android.content.Context
+import android.content.Intent
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class CoffeeAdapter(var coffees: List<Coffee>, var context: Context) : RecyclerView.Adapter<CoffeeAdapter.MyViewHolder>() {
     class MyViewHolder(view: View): RecyclerView.ViewHolder(view){
-        val image: ImageView = view.findViewById(R.id.coffee_list_image)
-        val title: TextView = view.findViewById(R.id.coffee_list_title)
-        val desc: TextView = view.findViewById(R.id.coffee_list_desc)
-        val rank: TextView = view.findViewById(R.id.coffee_list_rank)
-        val price: TextView = view.findViewById(R.id.coffee_list_price)
+        val image: ImageView = view.findViewById(R.id.coffee_image)
+        val title: TextView = view.findViewById(R.id.coffee_title)
+        val desc: TextView = view.findViewById(R.id.coffee_desc)
+        val rank: TextView = view.findViewById(R.id.coffee_rank)
+        val price: TextView = view.findViewById(R.id.coffee_price)
+        val btn: LinearLayout = view.findViewById(R.id.coffee_list_btn)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -37,6 +42,19 @@ class CoffeeAdapter(var coffees: List<Coffee>, var context: Context) : RecyclerV
             context.packageName
         )
 
-        holder.image.setImageResource(imageId)
+        val image = holder.image.setImageResource(imageId)
+
+        holder.btn.setOnClickListener{
+            val intent = Intent(context, CoffeeActivity::class.java)
+
+            intent.putExtra("coffeeTitle", coffees[position].title)
+            intent.putExtra("coffeeDesc", coffees[position].desc)
+            intent.putExtra("coffeeText", coffees[position].text)
+            intent.putExtra("coffeeRank", coffees[position].rank.toString())
+            intent.putExtra("coffeePrice", coffees[position].price.toString())
+            intent.putExtra("coffeeImageId", imageId.toString())
+
+            context.startActivity(intent)
+        }
     }
 }

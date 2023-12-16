@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#FFF4D2</color>
+    <color name="gray">#C6C6C6</color>
     <color name="background">#FFFFFF</color>
     <color name="card">#C28751</color>
     <color name="cream">#FDE9AA</color>

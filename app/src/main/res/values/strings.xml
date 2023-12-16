@@ -9,5 +9,10 @@
     <string name="enter_pass">Enter password</string>
     <string name="titleCoffee">Coffees</string>
     <string name="example">Example</string>
-
+    <string name="desc">Description</string>
+    <string name="size">Size</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="large">Large</string>
+    <string name="buy">Buy</string>
 </resources>

@@ -1,11 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/background"
+    android:orientation="vertical"
     tools:context=".CoffeeActivity">
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/coffee_image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:contentDescription="@string/example"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/coffee_price"
+        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coffee_image">
+
+        <TextView
+            android:id="@+id/coffee_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="0dp"
+            android:text="@string/example"
+            android:textColor="@color/brown"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/coffee_desc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="0dp"
+            android:text="@string/example"
+            android:textColor="@color/card"
+            android:textSize="17sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/coffee_title" />
+
+        <TextView
+            android:id="@+id/coffee_rank"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="10dp"
+            android:text="@string/example"
+            android:textColor="@color/card"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/coffee_desc" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/coffee_price"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:gravity="end"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="0dp"
+        android:text="@string/example"
+        android:textColor="@color/button"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coffee_image" />
+
+    <TextView
+        android:id="@+id/tag_state_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="16dp"
+        android:paddingHorizontal="20dp"
+        android:text="@string/desc"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <TextView
+        android:id="@+id/coffee_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingHorizontal="20dp"
+        android:text="@string/example"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tag_state_description" />
+
+    <TextView
+        android:id="@+id/coffee_size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="16dp"
+        android:paddingHorizontal="20dp"
+        android:text="@string/size"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coffee_text" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coffee_size">
+
+        <RadioButton
+            android:id="@+id/radio0"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_gravity="left"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/radio_button_style"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="@string/small"
+            android:textColor="@drawable/radio_button_text" />
+
+        <RadioButton
+            android:id="@+id/radio1"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/radio_button_style"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:gravity="center"
+            android:text="@string/medium"
+            android:textColor="@drawable/radio_button_text" />
+
+        <RadioButton
+            android:id="@+id/radio2"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_gravity="right"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/radio_button_style"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="@string/large"
+            android:textColor="@drawable/radio_button_text" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/coffee_buy"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="@string/buy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        android:backgroundTint="@color/button"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

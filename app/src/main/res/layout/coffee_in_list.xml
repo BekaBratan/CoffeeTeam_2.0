@@ -1,29 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coffee_list_btn"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
     android:background="@drawable/shape"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape">
-
-        <ImageView
-            android:id="@+id/coffee_list_image"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:scaleType="centerCrop"/>
-
-    </RelativeLayout>
-
+    <ImageView
+        android:id="@+id/coffee_image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="15dp"
+        android:scaleType="centerCrop"/>
 
 
     <TextView
-        android:id="@+id/coffee_list_title"
+        android:id="@+id/coffee_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="20dp"
@@ -34,7 +27,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/coffee_list_desc"
+        android:id="@+id/coffee_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="20dp"
@@ -45,7 +38,7 @@
         android:textStyle="italic" />
 
     <TextView
-        android:id="@+id/coffee_list_rank"
+        android:id="@+id/coffee_rank"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="end"
@@ -57,7 +50,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/coffee_list_price"
+        android:id="@+id/coffee_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="end"
