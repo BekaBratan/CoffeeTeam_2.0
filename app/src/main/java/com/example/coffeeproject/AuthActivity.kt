@@ -32,6 +32,9 @@ class AuthActivity : AppCompatActivity() {
                     Toast.makeText(this, "User logged: $login", Toast.LENGTH_LONG).show()
                     userLogin.text.clear()
                     userPass.text.clear()
+
+                    val intent = Intent(this, CoffeesActivity::class.java)
+                    startActivity(intent)
                 }
                 else
                     Toast.makeText(this, "Login or Password is incorrect", Toast.LENGTH_LONG).show()
