@@ -46,12 +46,20 @@ class CartAdapter(var coffees: List<Coffee>, var context: Context) : RecyclerVie
         holder.btn.setOnClickListener{
             val intent = Intent(context, CoffeeActivity::class.java)
 
+            intent.putExtra("coffeeId", coffees[position].id.toString())
             intent.putExtra("coffeeTitle", coffees[position].title)
             intent.putExtra("coffeeDesc", coffees[position].desc)
             intent.putExtra("coffeeText", coffees[position].text)
             intent.putExtra("coffeePrice", coffees[position].price.toString())
             intent.putExtra("coffeeImageId", imageId.toString())
 
+            context.startActivity(intent)
+        }
+
+        holder.cancel.setOnClickListener{
+            val db = DbHelper(context, null)
+            db.removeCart(coffees[position])
+            val intent = Intent(context, CartActivity::class.java)
             context.startActivity(intent)
         }
     }

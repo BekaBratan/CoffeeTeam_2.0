@@ -27,6 +27,7 @@ class AuthActivity : AppCompatActivity() {
                 Toast.makeText(this, "Not all fields are filled in", Toast.LENGTH_LONG).show()
             else {
                 val db = DbHelper(this, null)
+//                db.onUpgrade(db.writableDatabase, 1, 2)
                 val isAuth = db.getUser(login, pass)
 
                 if (isAuth) {

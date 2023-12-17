@@ -14,13 +14,13 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
         val queryUsers = "CREATE TABLE users (id INT PRIMARY KEY, login TEXT, email TEXT, pass TEXT)"
         db!!.execSQL(queryUsers)
 
-        val queryCart = "CREATE TABLE cart (id INT PRIMARY KEY, user_login INT, coffee_id INT)"
+        val queryCart = "CREATE TABLE cart (id INT PRIMARY KEY, user_login INT, coffee_id INT, quantity INT)"
         db!!.execSQL(queryCart)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
         val queryDropUsers = "DROP TABLE IF EXISTS users"
-        val queryDropCart = "DROP TABLE IF EXISTS users"
+        val queryDropCart = "DROP TABLE IF EXISTS cart"
         db!!.execSQL(queryDropUsers)
         db!!.execSQL(queryDropCart)
         onCreate(db)
@@ -42,20 +42,62 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
         val values = ContentValues()
         values.put("user_login", currentUser)
         values.put("coffee_id", coffee.id)
+        var cursor: Cursor?
 
         val db = this.writableDatabase
-        db.insert("cart", null, values)
 
+        var count = 0
+        val query = "SELECT quantity FROM cart WHERE (user_login = ?) AND (coffee_id = ?)"
+        cursor = db.rawQuery(query, arrayOf(currentUser, coffee.id.toString()))
+        if (cursor.moveToFirst()) {
+            count = cursor.getInt(0)
+        }
+
+        if (count==0) {
+            values.put("quantity", 1)
+            db.insert("cart", null, values)
+            Log.d("TAG", "addCart: added")
+        } else {
+            values.put("quantity", count + 1)
+            db.update("cart", values, "(user_login = ?) AND (coffee_id = ?)", arrayOf(currentUser, coffee.id.toString()))
+            Log.d("TAG", "addCart: not added and $count")
+        }
+        cursor?.close()
         db.close()
     }
 
     fun removeCart(coffee: Coffee){
+        val values = ContentValues()
+        values.put("user_login", currentUser)
+        values.put("coffee_id", coffee.id)
+
         val db = this.writableDatabase
         val coffeeId = coffee.id
-        val query = "DELETE FROM cart WHERE id = (SELECT MIN(id) FROM cart WHERE user_login = '$currentUser' AND coffee_id = '$coffeeId')"
-        db!!.execSQL(query)
+        val cursor: Cursor
 
-        db.close()
+//        var quantity = 0
+//        cursor = db?.rawQuery("SELECT quantity FROM example_table WHERE product_id = ?", arrayOf(coffeeId.toString()))
+//        quantity = cursor?.getInt(cursor.getColumnIndexOrThrow("quantity")) ?: 0
+//        Log.d("TAG", "removeCart: $quantity")
+
+        var count = 0
+        val query = "SELECT quantity FROM cart WHERE (user_login = ?) AND (coffee_id = ?)"
+        cursor = db.rawQuery(query, arrayOf(currentUser, coffeeId.toString()))
+        if (cursor.moveToFirst()) {
+            count = cursor.getInt(0)
+        }
+
+        if (count > 1) {
+            values.put("quantity", count - 1)
+            db.update("cart", values, "(user_login = ?) AND (coffee_id = ?)", arrayOf(currentUser, coffee.id.toString()))
+            Log.d("TAG", "addCart: not added and $count")
+        } else {
+            db.delete("cart","(user_login = ?) AND (coffee_id = ?)", arrayOf(currentUser, coffee.id.toString()))
+            Log.d("YourTag", "CurrentUser: $currentUser, CoffeeID: $coffeeId")
+        }
+//        db!!.delete("cart", "id IN SELECT id FROM cart WHERE user_login=? AND coffee_id=? ORDER BY coffee_id LIMIT 1)", arrayOf(currentUser, coffeeId.toString()))
+        cursor?.close()
+        db?.close()
     }
 
     fun getCart(): Map<Int, Int>? {
@@ -65,7 +107,7 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
 
         for (i in 0..<coffees.size) {
             var count = 0
-            val query = "SELECT COUNT(*) FROM cart WHERE (user_login = ?) AND (coffee_id = ?)"
+            val query = "SELECT quantity FROM cart WHERE (user_login = ?) AND (coffee_id = ?)"
             cursor = db.rawQuery(query, arrayOf(currentUser, i.toString()))
             if (cursor.moveToFirst()) {
                 count = cursor.getInt(0)
@@ -75,6 +117,8 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
             Log.d("YourTag", "CurrentUser: $currentUser, CoffeeID: $i")
             Log.i("$i", "getCart: $count")
         }
+
+        db.close()
         return cartMap
     }
 
