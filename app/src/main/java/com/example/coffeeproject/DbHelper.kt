@@ -5,11 +5,10 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?):
     SQLiteOpenHelper(context, "app", factory, 1) {
-
-    private var currentUser: String = ""
 
     override fun onCreate(db: SQLiteDatabase?) {
         val queryUsers = "CREATE TABLE users (id INT PRIMARY KEY, login TEXT, email TEXT, pass TEXT)"
@@ -65,26 +64,25 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
         var cursor: Cursor
 
         for (i in 0..<coffees.size) {
-            cursor = db.rawQuery("SELECT * FROM cart WHERE user_login = '$currentUser' AND coffee_id = '$i'", null)
-            cartMap[i] = cursor.count
+            var count = 0
+            val query = "SELECT COUNT(*) FROM cart WHERE (user_login = ?) AND (coffee_id = ?)"
+            cursor = db.rawQuery(query, arrayOf(currentUser, i.toString()))
+            if (cursor.moveToFirst()) {
+                count = cursor.getInt(0)
+            }
+            cursor.close()
+            cartMap[i] = count
+            Log.d("YourTag", "CurrentUser: $currentUser, CoffeeID: $i")
+            Log.i("$i", "getCart: $count")
         }
         return cartMap
     }
 
     fun getUser(login: String, pass: String): Boolean{
         val db = this.readableDatabase
-
         val querySelect = "SELECT * FROM users WHERE login = '$login' AND pass = '$pass'"
         val result = db.rawQuery(querySelect, null)
 
         return result.moveToFirst()
-    }
-
-    fun setUser(login: String){
-        currentUser = login
-    }
-
-    fun getUser(): String{
-        return currentUser
     }
 }

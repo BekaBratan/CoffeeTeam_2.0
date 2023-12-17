@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 
+public var currentUser: String = ""
 class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +30,7 @@ class AuthActivity : AppCompatActivity() {
                 val isAuth = db.getUser(login, pass)
 
                 if (isAuth) {
-                    db.setUser(login)
+                    currentUser = login
                     Toast.makeText(this, "User logged: $login", Toast.LENGTH_LONG).show()
                     userLogin.text.clear()
                     userPass.text.clear()
