@@ -29,7 +29,7 @@ class CoffeeActivity : AppCompatActivity() {
         image.setImageResource(imageId)
 
         val db = DbHelper(this, null)
-        val coffee = db.getCoffees()[coffeeId!!]
+        val coffee = coffees[coffeeId!!]
 
         addToCartBtn.setOnClickListener{
             db.addCart(coffee)

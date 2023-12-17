@@ -5,22 +5,25 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.widget.EditText
 
 class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?):
     SQLiteOpenHelper(context, "app", factory, 1) {
 
-    private lateinit var currentUser: String
-    private lateinit var coffees: List<Coffee>
+    private var currentUser: String = ""
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val query = "CREATE TABLE users (id INT PRIMARY KEY, login TEXT, email TEXT, pass TEXT)"
-        db!!.execSQL(query)
+        val queryUsers = "CREATE TABLE users (id INT PRIMARY KEY, login TEXT, email TEXT, pass TEXT)"
+        db!!.execSQL(queryUsers)
+
+        val queryCart = "CREATE TABLE cart (id INT PRIMARY KEY, user_login INT, coffee_id INT)"
+        db!!.execSQL(queryCart)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
-        val queryDrop = "DROP TABLE IF EXISTS users"
-        db!!.execSQL(queryDrop)
+        val queryDropUsers = "DROP TABLE IF EXISTS users"
+        val queryDropCart = "DROP TABLE IF EXISTS users"
+        db!!.execSQL(queryDropUsers)
+        db!!.execSQL(queryDropCart)
         onCreate(db)
     }
 
@@ -32,9 +35,6 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
 
         val db = this.writableDatabase
         db.insert("users", null, values)
-
-        val query = "CREATE TABLE cart (id INT PRIMARY KEY, user_login INT, coffee_id INT)"
-        db!!.execSQL(query)
 
         db.close()
     }
@@ -53,7 +53,7 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
     fun removeCart(coffee: Coffee){
         val db = this.writableDatabase
         val coffeeId = coffee.id
-        val query = "DELETE FROM cart WHERE Id = (SELECT MIN(id) FROM cart WHERE user_login = '$currentUser' AND coffee_id = '$coffeeId')"
+        val query = "DELETE FROM cart WHERE id = (SELECT MIN(id) FROM cart WHERE user_login = '$currentUser' AND coffee_id = '$coffeeId')"
         db!!.execSQL(query)
 
         db.close()
@@ -64,7 +64,7 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
         val cartMap = mutableMapOf<Int, Int>()
         var cursor: Cursor
 
-        for (i in 1..coffees.size+1) {
+        for (i in 0..<coffees.size) {
             cursor = db.rawQuery("SELECT * FROM cart WHERE user_login = '$currentUser' AND coffee_id = '$i'", null)
             cartMap[i] = cursor.count
         }
@@ -86,12 +86,5 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
 
     fun getUser(): String{
         return currentUser
-    }
-    fun setCoffees(coffeeList: List<Coffee>){
-        coffees = coffeeList
-    }
-
-    fun getCoffees(): List<Coffee>{
-        return coffees
     }
 }

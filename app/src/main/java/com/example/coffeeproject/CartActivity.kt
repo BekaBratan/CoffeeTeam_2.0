@@ -29,14 +29,13 @@ class CartActivity : AppCompatActivity() {
         val cartList: RecyclerView = findViewById(R.id.cart_list)
 
         val db = DbHelper(this, null)
-        val coffees = db.getCoffees()
         val cart = db.getCart()
         val coffeeInCart = mutableListOf<Coffee>()
 
         if (cart != null)
-            for (i in 1..cart.size){
+            for (i in 0..<cart.size){
                 val count = cart[i]
-                for (i in 1..count!!) {
+                for (j in 0..<count!!) {
                     coffeeInCart.add(coffees[i])
                 }
             }

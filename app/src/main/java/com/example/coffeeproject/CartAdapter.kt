@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 
 class CartAdapter(var coffees: List<Coffee>, var context: Context) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
@@ -17,7 +18,7 @@ class CartAdapter(var coffees: List<Coffee>, var context: Context) : RecyclerVie
         val title: TextView = view.findViewById(R.id.cart_title)
         val desc: TextView = view.findViewById(R.id.cart_desc)
         val price: TextView = view.findViewById(R.id.cart_price)
-        val btn: LinearLayout = view.findViewById(R.id.cart_list_btn)
+        val btn: ConstraintLayout = view.findViewById(R.id.cart_list_btn)
         val cancel: Button = view.findViewById(R.id.cart_btn)
     }
 
