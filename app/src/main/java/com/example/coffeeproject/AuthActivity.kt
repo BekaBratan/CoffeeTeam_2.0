@@ -29,6 +29,7 @@ class AuthActivity : AppCompatActivity() {
                 val isAuth = db.getUser(login, pass)
 
                 if (isAuth) {
+                    db.setUser(login)
                     Toast.makeText(this, "User logged: $login", Toast.LENGTH_LONG).show()
                     userLogin.text.clear()
                     userPass.text.clear()
@@ -36,8 +37,9 @@ class AuthActivity : AppCompatActivity() {
                     val intent = Intent(this, CoffeesActivity::class.java)
                     startActivity(intent)
                 }
-                else
+                else {
                     Toast.makeText(this, "Login or Password is incorrect", Toast.LENGTH_LONG).show()
+                }
             }
         }
 

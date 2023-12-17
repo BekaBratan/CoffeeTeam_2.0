@@ -1,7 +1,9 @@
 package com.example.coffeeproject
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -9,6 +11,20 @@ class CoffeesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coffees)
+
+        val shopBtn: Button = findViewById(R.id.shop_btn)
+        val cartBtn: Button = findViewById(R.id.cart_btn)
+        val profileBtn: Button = findViewById(R.id.profile_btn)
+
+        shopBtn.setOnClickListener{
+            val intent = Intent(this, CoffeesActivity::class.java)
+            startActivity(intent)
+        }
+
+        cartBtn.setOnClickListener{
+            val intent = Intent(this, CartActivity::class.java)
+            startActivity(intent)
+        }
 
         val coffeeList: RecyclerView = findViewById(R.id.coffee_list)
         val coffees = arrayListOf<Coffee>()
@@ -19,8 +35,9 @@ class CoffeesActivity : AppCompatActivity() {
         coffees.add(Coffee(4, "mocha", "Mocha", "Espresso, Chocolate, Steamed milk", "For all you chocolate lovers out there, you’ll fall in love with a mocha (or maybe you already have). The mocha is a chocolate espresso drink with steamed milk and foam.", 4.7, 1890))
         coffees.add(Coffee(5, "cappuccino", "Cappuccino", "Espresso, Steamed milk, Foam", "Cappuccino is a latte made with more foam than steamed milk, often with a sprinkle of cocoa powder or cinnamon on top. Sometimes you can find variations that use cream instead of milk or ones that throw in flavor shot, as well.", 4.2, 1190))
 
+        val db = DbHelper(this, null)
+        db.setCoffees(coffees)
         coffeeList.layoutManager = LinearLayoutManager(this)
         coffeeList.adapter = CoffeeAdapter(coffees, this)
-
     }
 }
