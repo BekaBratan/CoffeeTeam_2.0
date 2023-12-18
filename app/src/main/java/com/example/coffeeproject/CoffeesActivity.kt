@@ -1,5 +1,6 @@
 package com.example.coffeeproject
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,7 @@ private var elementsAdded = false
 
 class CoffeesActivity : AppCompatActivity() {
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coffees)
@@ -27,6 +29,11 @@ class CoffeesActivity : AppCompatActivity() {
 
         cartBtn.setOnClickListener{
             val intent = Intent(this, CartActivity::class.java)
+            startActivity(intent)
+        }
+
+        profileBtn.setOnClickListener{
+            val intent = Intent(this, profileActivity::class.java)
             startActivity(intent)
         }
 

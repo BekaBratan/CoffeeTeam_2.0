@@ -15,4 +15,13 @@
     <string name="profile">Profile</string>
     <string name="add_to_cart">Add to cart</string>
     <string name="cart">Cart</string>
+    <string name="exit">Exit</string>
+    <string name="UserLogin">User Login</string>
+    <string name="UserEmail">User Email</string>
+    <string name="change_pass">Change Password</string>
+    <string name="change_login">Change Login</string>
+    <string name="change_email">Change Email</string>
+    <string name="pass">Password</string>
+    <string name="phone_num">Phone Number</string>
+
 </resources>
