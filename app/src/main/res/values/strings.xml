@@ -11,9 +11,38 @@
     <string name="example">Example</string>
     <string name="desc">Description</string>
     <string name="size">Size</string>
+<<<<<<< Updated upstream
     <string name="small">Small</string>
     <string name="medium">Medium</string>
     <string name="large">Large</string>
     <string name="buy">Buy</string>
     <string name="Cart">Cart</string>
+=======
+    <string name="shop">Shop</string>
+    <string name="profile">Profile</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="cart">Cart</string>
+    <string name="exit">Exit</string>
+    <string name="UserLogin">User Login</string>
+    <string name="UserEmail">User Email</string>
+    <string name="change_pass">Change Password</string>
+    <string name="change_login">Change Login</string>
+    <string name="change_email">Change Email</string>
+    <string name="pass">Password</string>
+    <string name="phone_num">Phone Number</string>
+    <string name="pay">Pay</string>
+    <string name="back">⨯</string>
+    <string name="card_num">Card number</string>
+    <string name="address">Address</string>
+    <string name="card_date">Card date (YY)</string>
+    <string name="enter_card">Enter card info</string>
+    <string name="enter_address">Enter address</string>
+    <string name="price">Price</string>
+    <string name="payment">Payment</string>
+    <string name="card_csv">CSV (***)</string>
+    <string name="success">Thanks for using our app</string>
+
+
+
+>>>>>>> Stashed changes
 </resources>
