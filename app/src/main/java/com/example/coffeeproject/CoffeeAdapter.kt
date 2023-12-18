@@ -34,8 +34,8 @@ class CoffeeAdapter(var coffees: List<Coffee>, var context: Context) : RecyclerV
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.title.text = coffees[position].title
         holder.desc.text = coffees[position].desc
-        holder.rank.text = coffees[position].rank.toString()
-        holder.price.text = coffees[position].price.toString()
+        holder.rank.text = coffees[position].rank.toString() + " ⭐"
+        holder.price.text = coffees[position].price.toString() + " tg"
 
         var imageId = context.resources.getIdentifier(
             coffees[position].image, "drawable",

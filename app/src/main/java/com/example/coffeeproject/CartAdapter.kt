@@ -34,7 +34,7 @@ class CartAdapter(var coffees: List<Coffee>, var context: Context) : RecyclerVie
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
         holder.title.text = coffees[position].title
         holder.desc.text = coffees[position].desc
-        holder.price.text = coffees[position].price.toString()
+        holder.price.text = coffees[position].price.toString() + " tg"
 
         var imageId = context.resources.getIdentifier(
             coffees[position].image, "drawable",

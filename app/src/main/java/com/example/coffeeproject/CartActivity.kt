@@ -17,6 +17,7 @@ class CartActivity : AppCompatActivity() {
         val shopBtn: Button = findViewById(R.id.shop_btn)
         val cartBtn: Button = findViewById(R.id.cart_btn)
         val profileBtn: Button = findViewById(R.id.profile_btn)
+        val paymentBtn: Button = findViewById(R.id.payment_btn)
 
         shopBtn.setOnClickListener{
             val intent = Intent(this, CoffeesActivity::class.java)
@@ -30,6 +31,11 @@ class CartActivity : AppCompatActivity() {
 
         profileBtn.setOnClickListener{
             val intent = Intent(this, profileActivity::class.java)
+            startActivity(intent)
+        }
+
+        paymentBtn.setOnClickListener{
+            val intent = Intent(this, PaymentActivity::class.java)
             startActivity(intent)
         }
 

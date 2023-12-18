@@ -78,8 +78,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="300dp"
         android:background="@drawable/profil_shape"
         android:paddingHorizontal="5dp"
         android:paddingTop="25dp"
@@ -215,13 +215,13 @@
             android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingHorizontal="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.444"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent">
 
             <RadioButton
@@ -231,6 +231,8 @@
                 android:layout_marginHorizontal="15dp"
                 android:background="@drawable/radio_button_style"
                 android:button="@android:color/transparent"
+                android:textSize="17sp"
+                android:textStyle="bold"
                 android:gravity="center"
                 android:text="@string/shop"
                 android:textColor="@drawable/radio_button_text" />
@@ -242,6 +244,8 @@
                 android:layout_marginHorizontal="15dp"
                 android:background="@drawable/radio_button_style"
                 android:button="@android:color/transparent"
+                android:textSize="17sp"
+                android:textStyle="bold"
                 android:gravity="center"
                 android:text="@string/cart"
                 android:textColor="@drawable/radio_button_text" />
@@ -253,6 +257,8 @@
                 android:layout_marginHorizontal="15dp"
                 android:background="@drawable/radio_button_style"
                 android:button="@android:color/transparent"
+                android:textSize="17sp"
+                android:textStyle="bold"
                 android:checked="true"
                 android:gravity="center"
                 android:text="@string/profile"

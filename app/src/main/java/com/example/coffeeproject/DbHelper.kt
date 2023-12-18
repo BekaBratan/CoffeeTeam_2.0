@@ -62,6 +62,7 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
             db.update("cart", values, "(user_login = ?) AND (coffee_id = ?)", arrayOf(currentUser, coffee.id.toString()))
             Log.d("TAG", "addCart: not added and $count")
         }
+
         cursor?.close()
         db.close()
     }
@@ -74,11 +75,6 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
         val db = this.writableDatabase
         val coffeeId = coffee.id
         val cursor: Cursor
-
-//        var quantity = 0
-//        cursor = db?.rawQuery("SELECT quantity FROM example_table WHERE product_id = ?", arrayOf(coffeeId.toString()))
-//        quantity = cursor?.getInt(cursor.getColumnIndexOrThrow("quantity")) ?: 0
-//        Log.d("TAG", "removeCart: $quantity")
 
         var count = 0
         val query = "SELECT quantity FROM cart WHERE (user_login = ?) AND (coffee_id = ?)"
@@ -95,7 +91,7 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
             db.delete("cart","(user_login = ?) AND (coffee_id = ?)", arrayOf(currentUser, coffee.id.toString()))
             Log.d("YourTag", "CurrentUser: $currentUser, CoffeeID: $coffeeId")
         }
-//        db!!.delete("cart", "id IN SELECT id FROM cart WHERE user_login=? AND coffee_id=? ORDER BY coffee_id LIMIT 1)", arrayOf(currentUser, coffeeId.toString()))
+
         cursor?.close()
         db?.close()
     }
@@ -120,6 +116,29 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
 
         db.close()
         return cartMap
+    }
+
+    fun getPrice(): Int {
+        val db = this.readableDatabase
+
+        var price = 0
+
+        for (i in 0..<coffees.size) {
+            var cursor: Cursor
+            var count = 0
+            val query = "SELECT quantity FROM cart WHERE (user_login = ?) AND (coffee_id = ?)"
+            cursor = db.rawQuery(query, arrayOf(currentUser, i.toString()))
+            if (cursor.moveToFirst()) {
+                count = cursor.getInt(0)
+            }
+            cursor.close()
+            price += count * coffees[i].price
+            Log.d("YourTag", "CurrentUser: $currentUser, CoffeeID: $i")
+            Log.i("$i", "getCart: $count")
+        }
+
+        db.close()
+        return price
     }
 
     fun getUser(login: String, pass: String): Boolean{

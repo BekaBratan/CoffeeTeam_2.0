@@ -20,7 +20,7 @@ class CoffeeActivity : AppCompatActivity() {
         val text: TextView = findViewById(R.id.coffee_text)
         val image: ImageView = findViewById(R.id.coffee_image)
         val addToCartBtn: Button = findViewById(R.id.coffee_buy)
-        val backBtn: Button = findViewById(R.id.back_btn)
+        val backBtn: TextView = findViewById(R.id.back_btn)
 
         val coffeeId = intent.getStringExtra("coffeeId")?.toInt()
         title.text = intent.getStringExtra("coffeeTitle")

@@ -23,5 +23,15 @@
     <string name="change_email">Change Email</string>
     <string name="pass">Password</string>
     <string name="phone_num">Phone Number</string>
+    <string name="pay">Pay</string>
+    <string name="back">⨯</string>
+    <string name="card_num">Card number</string>
+    <string name="address">Address</string>
+    <string name="card_date">Card date (YY)</string>
+    <string name="enter_card">Enter card info</string>
+    <string name="enter_address">Enter address</string>
+    <string name="price">Price</string>
+    <string name="payment">Payment</string>
+    <string name="card_csv">CSV (***)</string>
 
 </resources>
