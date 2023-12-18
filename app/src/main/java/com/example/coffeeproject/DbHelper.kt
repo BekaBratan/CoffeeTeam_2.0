@@ -118,6 +118,12 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
         return cartMap
     }
 
+    fun clearCart(){
+        val db = this.writableDatabase
+        db.delete("cart","(user_login = ?)", arrayOf(currentUser))
+        db.close()
+    }
+
     fun getPrice(): Int {
         val db = this.readableDatabase
 
@@ -147,5 +153,13 @@ class DbHelper(val context: Context, val factory: SQLiteDatabase.CursorFactory?)
         val result = db.rawQuery(querySelect, null)
 
         return result.moveToFirst()
+    }
+
+    fun deleteUser() {
+        val db = this.writableDatabase
+        db.delete("users","(user_login = ?)", arrayOf(currentUser))
+        db.delete("cart","(user_login = ?)", arrayOf(currentUser))
+
+        db.close()
     }
 }

@@ -30,7 +30,7 @@ class CartActivity : AppCompatActivity() {
         }
 
         profileBtn.setOnClickListener{
-            val intent = Intent(this, profileActivity::class.java)
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
 

@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class CartAdapter(var coffees: List<Coffee>, var context: Context) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
     class CartViewHolder(view: View): RecyclerView.ViewHolder(view){
@@ -36,12 +37,17 @@ class CartAdapter(var coffees: List<Coffee>, var context: Context) : RecyclerVie
         holder.desc.text = coffees[position].desc
         holder.price.text = coffees[position].price.toString() + " tg"
 
-        var imageId = context.resources.getIdentifier(
-            coffees[position].image, "drawable",
-            context.packageName
-        )
+//        var imageId = context.resources.getIdentifier(
+//            coffees[position].image, "drawable",
+//            context.packageName
+//        )
+//
+//        val image = holder.image.setImageResource(imageId)
 
-        val image = holder.image.setImageResource(imageId)
+        val imageId = coffees[position].image
+        Glide.with(context).load(imageId).into(holder.image)
+
+
 
         holder.btn.setOnClickListener{
             val intent = Intent(context, CoffeeActivity::class.java)

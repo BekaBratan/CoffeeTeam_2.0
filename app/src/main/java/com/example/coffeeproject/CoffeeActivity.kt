@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.findViewTreeViewModelStoreOwner
+import com.bumptech.glide.Glide
 
 class CoffeeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,8 +29,10 @@ class CoffeeActivity : AppCompatActivity() {
         rank.text = intent.getStringExtra("coffeeRank") + " ⭐"
         price.text = intent.getStringExtra("coffeePrice") + " tg"
         text.text = intent.getStringExtra("coffeeText")
-        val imageId: Int = intent.getStringExtra("coffeeImageId")?.toInt() ?: 0
-        image.setImageResource(imageId)
+//        val imageId: Int = intent.getStringExtra("coffeeImageId")?.toInt() ?: 0
+        val imageId = intent.getStringExtra("coffeeImageId")
+//        image.setImageResource(imageId)
+        Glide.with(this).load(imageId).into(image)
 
         val prev = intent.getStringExtra("prev")
 

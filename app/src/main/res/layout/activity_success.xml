@@ -33,13 +33,13 @@
 
 
     <Button
-        android:id="@+id/payment_btn"
+        android:id="@+id/success_btn"
         android:layout_width="248dp"
         android:layout_height="71dp"
         android:layout_marginTop="100dp"
         android:backgroundTint="@color/button"
-        android:textSize="30dp"
         android:text="@string/exit"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"

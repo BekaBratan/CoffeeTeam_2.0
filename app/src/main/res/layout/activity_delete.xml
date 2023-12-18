@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DeleteActivity"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/delete_acc_btn"
+        android:layout_width="220dp"
+        android:layout_height="70dp"
+        android:backgroundTint="@color/button"
+        android:text="@string/delete"
+        android:textSize="17sp"/>
+
+    <Button
+        android:id="@+id/exit_btn"
+        android:layout_width="220dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/button"
+        android:text="@string/exit"
+        android:textSize="22sp"/>
+</LinearLayout>
