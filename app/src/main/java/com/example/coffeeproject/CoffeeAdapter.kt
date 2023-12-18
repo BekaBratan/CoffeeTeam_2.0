@@ -54,6 +54,7 @@ class CoffeeAdapter(var coffees: List<Coffee>, var context: Context) : RecyclerV
             intent.putExtra("coffeeRank", coffees[position].rank.toString())
             intent.putExtra("coffeePrice", coffees[position].price.toString())
             intent.putExtra("coffeeImageId", imageId.toString())
+            intent.putExtra("prev", "shop")
 
             context.startActivity(intent)
         }

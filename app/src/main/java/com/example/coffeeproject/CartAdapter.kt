@@ -50,6 +50,7 @@ class CartAdapter(var coffees: List<Coffee>, var context: Context) : RecyclerVie
             intent.putExtra("coffeeTitle", coffees[position].title)
             intent.putExtra("coffeeDesc", coffees[position].desc)
             intent.putExtra("coffeeText", coffees[position].text)
+            intent.putExtra("coffeeRank", coffees[position].rank.toString())
             intent.putExtra("coffeePrice", coffees[position].price.toString())
             intent.putExtra("coffeeImageId", imageId.toString())
 

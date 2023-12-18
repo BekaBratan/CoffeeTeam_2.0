@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,47 +12,82 @@
         android:id="@+id/main_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
         android:text="@string/titleCoffee"
         android:textColor="@color/button"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
         android:textSize="32sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/coffee_list"
         android:layout_width="match_parent"
-        android:layout_height="580dp"
+        android:layout_height="match_parent"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="10dp">
+        android:layout_marginVertical="70dp"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_label">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <LinearLayout
+    <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <Button
+        <RadioButton
             android:id="@+id/shop_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="shop" />
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/radio_button_style"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="@string/shop"
+            android:textColor="@drawable/radio_button_text" />
 
-        <Button
+        <RadioButton
             android:id="@+id/cart_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="cart" />
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/radio_button_style"
+            android:button="@android:color/transparent"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="@string/cart"
+            android:textColor="@drawable/radio_button_text" />
 
-        <Button
+        <RadioButton
             android:id="@+id/profile_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="profile" />
-    </LinearLayout>
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/radio_button_style"
+            android:button="@android:color/transparent"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="@string/profile"
+            android:textColor="@drawable/radio_button_text" />
+    </RadioGroup>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
