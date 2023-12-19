@@ -23,6 +23,28 @@ class CoffeeActivity : AppCompatActivity() {
         val addToCartBtn: Button = findViewById(R.id.coffee_buy)
         val backBtn: TextView = findViewById(R.id.back_btn)
 
+        if (findViewById<Button>(R.id.shop_btn) != null) {
+            val shopBtn: Button = findViewById(R.id.shop_btn)
+            val cartBtn: Button = findViewById(R.id.cart_btn)
+            val profileBtn: Button = findViewById(R.id.profile_btn)
+
+            shopBtn.setOnClickListener {
+                val intent = Intent(this, CoffeesActivity::class.java)
+                startActivity(intent)
+            }
+
+            cartBtn.setOnClickListener {
+                val intent = Intent(this, CartActivity::class.java)
+                startActivity(intent)
+            }
+
+            profileBtn.setOnClickListener {
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+
         val coffeeId = intent.getStringExtra("coffeeId")?.toInt()
         title.text = intent.getStringExtra("coffeeTitle")
         desc.text = intent.getStringExtra("coffeeDesc")

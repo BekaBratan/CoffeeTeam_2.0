@@ -18,9 +18,9 @@
     <string name="Cart">Cart</string>
     <string name="shop">Shop</string>
     <string name="profile">Profile</string>
-    <string name="CartIcon">Cart</string>
-    <string name="shopIcon">Shop</string>
-    <string name="profileIcon">Profile</string>
+    <string name="CartIcon">🛒</string>
+    <string name="coffeeIcon">☕</string>
+    <string name="profileIcon">👤</string>
     <string name="add_to_cart">Add to cart</string>
     <string name="cart">Cart</string>
     <string name="exit">Exit</string>

@@ -15,5 +15,26 @@ class SuccessActivity : AppCompatActivity() {
             val intent = Intent(this, CoffeesActivity::class.java)
             startActivity(intent)
         }
+
+        if (findViewById<Button>(R.id.shop_btn) != null) {
+            val shopBtn: Button = findViewById(R.id.shop_btn)
+            val cartBtn: Button = findViewById(R.id.cart_btn)
+            val profileBtn: Button = findViewById(R.id.profile_btn)
+
+            shopBtn.setOnClickListener {
+                val intent = Intent(this, CoffeesActivity::class.java)
+                startActivity(intent)
+            }
+
+            cartBtn.setOnClickListener {
+                val intent = Intent(this, CartActivity::class.java)
+                startActivity(intent)
+            }
+
+            profileBtn.setOnClickListener {
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 }
