@@ -25,12 +25,16 @@ class MainActivity : AppCompatActivity() {
             val email = userEmail.text.toString().trim()
             val pass = userPass.text.toString().trim()
 
+            val db = DbHelper(this, null)
             if(login == "" || email == "" || pass == "")
                 Toast.makeText(this, "Not all fields are filled in", Toast.LENGTH_LONG).show()
+            else if(!email.contains('@') || pass.length < 8)
+                Toast.makeText(this, "Fields are not require", Toast.LENGTH_LONG).show()
+            else if(db.getUser(login))
+                Toast.makeText(this, "User $login is already exists", Toast.LENGTH_LONG).show()
             else {
                 val user = User(login, email, pass)
 
-                val db = DbHelper(this, null)
                 db.addUser(user)
 
                 Toast.makeText(this, "User added: $login", Toast.LENGTH_LONG).show()
